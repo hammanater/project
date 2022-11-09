@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./game-list.component.css']
 })
 export class GameListComponent implements OnInit {
-
+  games = [];
   constructor() { }
 
   ngOnInit(): void {
