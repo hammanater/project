@@ -16,4 +16,8 @@ export class ShoppingListComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onGameAdded(Gm: Gms) {
+    this.Gm.push(Gm)
+  }
+
 }
