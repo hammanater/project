@@ -1,6 +1,6 @@
 import { Component, OnInit, ElementRef, ViewChild, EventEmitter } from '@angular/core';
 import { Game } from 'src/app/games/games.model';
-import { Gms } from 'src/app/shared/gms.model';
+import { Gm } from 'src/app/shared/gms.model';
 
 @Component({
   selector: 'app-shopping-edit',
@@ -10,7 +10,7 @@ import { Gms } from 'src/app/shared/gms.model';
 export class ShoppingEditComponent implements OnInit {
   @ViewChild('nameInput') nameInputRef: ElementRef;
   @ViewChild('priceInput') priceInputRef: ElementRef;
-  gameAdded = new EventEmitter<Gms>();
+  gameAdded = new EventEmitter<Gm>();
 
 
   constructor() { }
@@ -19,9 +19,10 @@ export class ShoppingEditComponent implements OnInit {
   }
 
   onAddItem(){
-    const gmsName = this.nameInputRef.nativeElement.nameInput;
-    const gmsPrice = this.priceInputRef.nativeElement.priceInput;
-    const newGm = new Gms(gmsName, gmsPrice);
-    this.gameAdded.emit(newGm);
+    const GmName = this.nameInputRef.nativeElement.nameInput;
+    const GmPrice = this.priceInputRef.nativeElement.priceInput;
+    const newGms = new Gm(GmName, GmPrice);
+    this.gameAdded.emit(newGms);
+    console.log('test')
   }
 }

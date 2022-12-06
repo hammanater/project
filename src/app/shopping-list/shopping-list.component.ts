@@ -1,23 +1,29 @@
 import { Component, OnInit } from '@angular/core';
-import { Gms } from '../shared/gms.model'
+import { Subject } from 'rxjs';
+import { Gm } from '../shared/gms.model'
 @Component({
   selector: 'app-shopping-list',
   templateUrl: './shopping-list.component.html',
   styleUrls: ['./shopping-list.component.css']
 })
 export class ShoppingListComponent implements OnInit {
-  Gm: Gms[] = [
-    new Gms ('Defcon', '$9.99'),
-    new Gms ('Astroneer', '$29.99')
+  Gms: Gm[] = [
+    new Gm ('Defcon', '$9.99'),
+    new Gm ('Astroneer', '$29.99')
   ]
-
-  constructor() { }
-
-  ngOnInit(): void {
+  getGm() {
+    return this.Gms.slice();
   }
 
-  onGameAdded(Gm: Gms) {
-    this.Gm.push(Gm)
+  ngOnInit(): void {
+
+  }
+
+  GmsChanged = new Subject<{Gm:string}>();
+
+  onGameAdded(Gms: Gm) {
+    this.Gms.push(Gms)
+    this.GmsChanged.next(this.getGm())
   }
 
 }
